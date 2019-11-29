@@ -19,14 +19,14 @@ exports.handler = async function(event, context) {
 exports.sendEmail = async function(event, context) {
   console.log("Handling email to", event);
 
-  if(!event.email.match(/^[^@]+@[^@]+$/)) {
+  const email = event.queryStringParameters.email
+  const name = event.queryStringParameters.name.substr(0, 40).replace(/[^\w\s]/g, '');
+
+  if(!event.queryStringParameters.email.match(/^[^@]+@[^@]+$/)) {
     console.log("Not sending: invalid email address", event);
     context.done(null, "Failed");
     return;
   }
-
-  const name = event.name.substr(0, 40).replace(/[^\w\s]/g, '');
-
   const htmlBody = `
     <!DOCTYPE html>
     <html>
@@ -48,7 +48,7 @@ exports.sendEmail = async function(event, context) {
    // Create sendEmail params
   const params = {
     Destination: {
-      ToAddresses: [event.email]
+      ToAddresses: [email]
     },
     Message: {
       Body: {

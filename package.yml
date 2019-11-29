@@ -22,7 +22,7 @@ Resources:
         Variables:
           SNS_TOPIC_ARN:
             Ref: SendEmailSnsTopic
-      CodeUri: s3://charles-send-email/459a31f01835fc861d9f3c09fe44ea6d
+      CodeUri: s3://charles-send-email/48bcb4aa12033a5aa64acdd0e5557590
   SendEmailCharlesFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -42,7 +42,7 @@ Resources:
           - ses:SendEmail
           - ses:SendRawEmail
           Resource: '*'
-      CodeUri: s3://charles-send-email/459a31f01835fc861d9f3c09fe44ea6d
+      CodeUri: s3://charles-send-email/48bcb4aa12033a5aa64acdd0e5557590
   SendEmailSnsTopic:
     Type: AWS::SNS::Topic
     Properties:
