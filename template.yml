@@ -1,24 +1,43 @@
 AWSTemplateFormatVersion : '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  HelloWorldFunction:
+  SendEmailToSubscriptionFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
       Runtime: nodejs8.10
       Events:
-        HelloWorldApi:
+        SendEmailApi:
           Type: Api
           Properties:
             Path: /
             Method: GET
       Policies:
         - SNSPublishMessagePolicy:
-            TopicName: !GetAtt HelloWorldTopic.TopicName
+            TopicName: !GetAtt SendEmailSnsTopic.TopicName
       Environment:
         Variables:
-          SNS_TOPIC_ARN: !Ref HelloWorldTopic
-  HelloWorldTopic:
+          SNS_TOPIC_ARN: !Ref SendEmailSnsTopic
+  SendEmailCharlesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.sendEmail
+      Runtime: nodejs8.10
+      Events:
+        SendEmailApi:
+          Type: Api
+          Properties:
+            Path: /sendEmail
+            Method: GET
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 'ses:SendEmail'
+                - 'ses:SendRawEmail'
+              Resource: '*'
+  SendEmailSnsTopic:
     Type: AWS::SNS::Topic
     Properties:
       Subscription:
