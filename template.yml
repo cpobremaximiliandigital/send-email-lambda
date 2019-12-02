@@ -28,7 +28,7 @@ Resources:
           Type: Api
           Properties:
             Path: /sendEmail
-            Method: GET
+            Method: POST
       Policies:
         - Version: '2012-10-17'
           Statement:

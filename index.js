@@ -19,14 +19,13 @@ exports.handler = async function(event, context) {
 exports.sendEmail = async function(event, context) {
   console.log("Handling email to", event);
 
-  const email = event.queryStringParameters.email
-  const name = event.queryStringParameters.name.substr(0, 40).replace(/[^\w\s]/g, '');
+  const data = JSON.parse(event.body);
 
-  if(!event.queryStringParameters.email.match(/^[^@]+@[^@]+$/)) {
-    console.log("Not sending: invalid email address", event);
-    context.done(null, "Failed");
-    return;
-  }
+  const subject = data.subject;
+  const recipients = data.recipients.split(",");
+  const cc = data.cc.split(",");
+  const name = data.name.substr(0, 40).replace(/[^\w\s]/g, '');
+
   const htmlBody = `
     <!DOCTYPE html>
     <html>
@@ -48,7 +47,8 @@ exports.sendEmail = async function(event, context) {
    // Create sendEmail params
   const params = {
     Destination: {
-      ToAddresses: [email]
+      ToAddresses: recipients,
+      CcAddresses: cc
     },
     Message: {
       Body: {
@@ -63,7 +63,7 @@ exports.sendEmail = async function(event, context) {
       },
       Subject: {
         Charset: "UTF-8",
-        Data: "Hi! I'm Charles sending you an email!"
+        Data: subject
       }
     },
     Source: "Charles from TreatAnyone <itops@hopeprogram.biz>"
