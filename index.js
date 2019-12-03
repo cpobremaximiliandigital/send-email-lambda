@@ -75,7 +75,7 @@ exports.sendEmail = async function(event, context) {
 
   try {
     await sendPromise.promise()
-    return { statusCode: 200, body: 'Message sent' };
+    return { statusCode: 200 };
   } catch(err) {
     return { statusCode: 500, body: JSON.stringify(err) };
   }
