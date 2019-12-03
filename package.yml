@@ -5,7 +5,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
-      Runtime: nodejs8.10
+      Runtime: nodejs12.x
       Events:
         SendEmailApi:
           Type: Api
@@ -22,7 +22,7 @@ Resources:
         Variables:
           SNS_TOPIC_ARN:
             Ref: SendEmailSnsTopic
-      CodeUri: s3://charles-send-email/f1e7cc02e2c3a0be2f9d977aa3821584
+      CodeUri: s3://charles-send-email/91cf73f7d4f6629182c8e6a0334cfeec
   SendEmailCharlesFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -42,7 +42,7 @@ Resources:
           - ses:SendEmail
           - ses:SendRawEmail
           Resource: '*'
-      CodeUri: s3://charles-send-email/f1e7cc02e2c3a0be2f9d977aa3821584
+      CodeUri: s3://charles-send-email/91cf73f7d4f6629182c8e6a0334cfeec
   SendEmailSnsTopic:
     Type: AWS::SNS::Topic
     Properties:
