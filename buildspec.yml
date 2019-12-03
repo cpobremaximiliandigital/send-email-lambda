@@ -1,14 +1,12 @@
 version: 0.2
 phases:
-  install:
-    runtime-versions:
-        nodejs: 10
   build:
     commands:
+      - pip install --upgrade pip
+      - pip install pipenv --user
+      - pipenv install aws-sam-cli
       - export BUCKET=charles-send-email-artifacts-1
-      - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
+      - sam package --template-file template.yml --output-template-file packaged-template.yml --s3-bucket $BUCKET
 artifacts:
-  type: zip
   files:
-    - template.yml
-    - outputtemplate.yml
+    - packaged-template.yml
