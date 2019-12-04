@@ -1,3 +1,11 @@
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: charles-send-email-1
+    Description: Sending Email Application
+    Author: charlespobre
+    SpdxLicenseId: Apache-2.0
+    SemanticVersion: 0.0.1
+    SourceCodeUrl: https://github.com/cpobremaximiliandigital/send-email-lambda
 AWSTemplateFormatVersion : '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
