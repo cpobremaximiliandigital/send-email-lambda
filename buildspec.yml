@@ -9,4 +9,5 @@ phases:
       - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file packaged-template.yml
 artifacts:
   files:
+    - template.yml
     - packaged-template.yml

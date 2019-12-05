@@ -9,23 +9,6 @@ Metadata:
 AWSTemplateFormatVersion : '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  SendEmailToSubscriptionFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: index.handler
-      Runtime: nodejs12.x
-      Events:
-        SendEmailApi:
-          Type: Api
-          Properties:
-            Path: /
-            Method: GET
-      Policies:
-        - SNSPublishMessagePolicy:
-            TopicName: !GetAtt SendEmailSnsTopic.TopicName
-      Environment:
-        Variables:
-          SNS_TOPIC_ARN: !Ref SendEmailSnsTopic
   SendEmailCharlesFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -45,9 +28,3 @@ Resources:
                 - 'ses:SendEmail'
                 - 'ses:SendRawEmail'
               Resource: '*'
-  SendEmailSnsTopic:
-    Type: AWS::SNS::Topic
-    Properties:
-      Subscription:
-        - Endpoint: cpobre@treatanyone.com
-          Protocol: email
