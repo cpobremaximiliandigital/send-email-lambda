@@ -18,7 +18,7 @@ exports.sendEmail = async function(event, context) {
       </head>
       <body>
         <p>Hi ${name},</p>
-        <p>I'm sending you an email just to test this function.</p>
+        <p>I'm sending you an email just to test this function. And also proof of modification via CodePipeline test.</p>
       </body>
     </html>
   `;
