@@ -41,7 +41,7 @@ exports.sendEmail = async function(event, context) {
   const textBody = `
     Hi ${name},
 
-    I'm sending you an email just to test this function. And also proof of modification via CodePipeline v3.
+    I'm sending you an email just to test this function. And also proof of modification via CodePipeline test.
   `;
 
    // Create sendEmail params
