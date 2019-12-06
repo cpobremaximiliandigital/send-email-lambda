@@ -17,16 +17,16 @@ exports.sendEmail = async function(event, context) {
       <head>
       </head>
       <body>
-        <p>Hi ${name}!</p>
-        <p>I'm sending you an email just to test this function. And also proof of modification via CodePipeline test.</p>
+        <p>Hi ${name} AKA CRISPULO!</p>
+        <p>I'm sending you an email just to test this function. And also proof of modification via <a href="https://aws.amazon.com/codepipeline/">CodePipeline</a> test.</p>
       </body>
     </html>
   `;
 
   const textBody = `
-    Hi ${name}!
+    Hi ${name} AKA CRISPULO!
 
-    I'm sending you an email just to test this function. And also proof of modification via CodePipeline test.
+    I'm sending you an email just to test this function. And also proof of modification via  <a href="https://aws.amazon.com/codepipeline/">CodePipeline</a> test.
   `;
 
    // Create sendEmail params
