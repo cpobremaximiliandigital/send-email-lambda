@@ -19,6 +19,7 @@ exports.sendEmail = async function(event, context) {
       <body>
         <p>Hi ${name} AKA CRISPULO!</p>
         <p>I'm sending you an email just to test this function. And also proof of modification via <a href="https://aws.amazon.com/codepipeline/">CodePipeline</a> test.</p>
+        <p>Kindly confirm if the changes appear on the email by sending chat to <b>Clififi</b></p>
       </body>
     </html>
   `;
@@ -27,6 +28,8 @@ exports.sendEmail = async function(event, context) {
     Hi ${name} AKA CRISPULO!
 
     I'm sending you an email just to test this function. And also proof of modification via  <a href="https://aws.amazon.com/codepipeline/">CodePipeline</a> test.
+
+    Kindly confirm if the changes appear on the email by sending chat to <b>Clififi</b>
   `;
 
    // Create sendEmail params
