@@ -17,14 +17,14 @@ exports.sendEmail = async function(event, context) {
       <head>
       </head>
       <body>
-        <p>Hi ${name},</p>
+        <p>Hi ${name}!</p>
         <p>I'm sending you an email just to test this function. And also proof of modification via CodePipeline test.</p>
       </body>
     </html>
   `;
 
   const textBody = `
-    Hi ${name},
+    Hi ${name}!
 
     I'm sending you an email just to test this function. And also proof of modification via CodePipeline test.
   `;
