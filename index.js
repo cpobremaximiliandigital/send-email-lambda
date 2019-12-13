@@ -17,9 +17,8 @@ exports.sendEmail = async function(event, context) {
       <head>
       </head>
       <body>
-        <p>Hi ${name} AKA CRISPULO!</p>
-        <p>I'm sending you an email just to test this function. And also proof of modification via <a href="https://aws.amazon.com/codepipeline/">CodePipeline</a> test.</p>
-        <p>Kindly confirm if the changes appear on the email by sending chat to <b>Clififi</b></p>
+        <p>Hi ${name},</p>
+        <p>I'm sending you an email just to test this function. And also proof of modification via CodePipeline test. another test</p>
       </body>
     </html>
   `;
@@ -27,9 +26,7 @@ exports.sendEmail = async function(event, context) {
   const textBody = `
     Hi ${name} AKA CRISPULO!
 
-    I'm sending you an email just to test this function. And also proof of modification via  <a href="https://aws.amazon.com/codepipeline/">CodePipeline</a> test.
-
-    Kindly confirm if the changes appear on the email by sending chat to <b>Clififi</b>
+    I'm sending you an email just to test this function. And also proof of modification via CodePipeline test. another test
   `;
 
    // Create sendEmail params
